@@ -1,0 +1,75 @@
+#include <iostream>
+using namespace std;
+
+//  Global variable
+int stack[100], size = 100, postion = -1;
+
+void push(int val)
+{
+    if (postion >= size - 1)
+    {
+        cout << "stack full" << endl;
+    }
+    else
+    {
+        postion++;
+        stack[postion] = val;
+    }
+}
+
+void print_arr(){
+    if(postion>=0){
+        cout<<"stack elements are: ";
+        for(int i=postion;i>=0;i--)
+        {
+            cout<<stack[i]<< " ";
+            cout<<endl;
+        }
+    }
+}
+
+void pop(){
+    if (postion <=-1){
+        cout<<"stack underflow"<<endl;
+    }
+    else{
+        cout<<"pop value"<<stack[postion] <<endl;
+        postion--;
+    }
+}
+
+int main()
+{
+int ch, val;
+   cout<<"1) Push in stack"<<endl;
+   cout<<"2) Pop from stack"<<endl;
+   cout<<"3) Display stack"<<endl;
+   cout<<"4) Exit"<<endl;
+   do {
+      cout<<"Enter choice: "<<endl;
+      cin>>ch;
+      switch(ch) {
+         case 1: {
+            cout<<"Enter value to be pushed:"<<endl;
+            cin>>val;
+            push(val);
+            break;
+         }
+         case 2: {
+            pop();
+            break;
+         }
+         case 3: {
+            print_arr();
+            break;
+         }
+         case 4: {
+            cout<<"Exit"<<endl;
+            break;
+         }
+         default: {
+            cout<<"Invalid Choice"<<endl;
+         }
+      }
+   }while(ch!=4);
+   return 0;}
